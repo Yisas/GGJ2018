@@ -69,9 +69,9 @@ public class PressurePlateNew : MonoBehaviour
             isActive = true;
 
             onSound.Play();
-            //Door[] doors = target.GetComponentsInChildren<Door>();
-            //foreach (Door d in doors)
-            //  d.IncCount();
+            Door[] doors = target.GetComponentsInChildren<Door>();
+            foreach (Door d in doors)
+              d.DecCount();
         }
     }
 
@@ -83,9 +83,9 @@ public class PressurePlateNew : MonoBehaviour
             myLight.enabled = false;
             isActive = false;
 
-            //Door[] doors = target.GetComponentsInChildren<Door>();
-            //foreach (Door d in doors)
-            //    d.DecCount();
+            Door[] doors = target.GetComponentsInChildren<Door>();
+            foreach (Door d in doors)
+                d.IncCount();
         }
 
         offSound.Play();
