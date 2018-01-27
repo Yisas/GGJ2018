@@ -16,6 +16,8 @@ public class PlayerMove : MonoBehaviour
     public Animator animator;                   //object with animation controller on, which you want to animate
     public AudioClip jumpSound;                 //play when jumping
     public AudioClip landSound;                 //play when landing on ground
+    //GGJ addition:
+    public AudioClip runSound;                  //play when running
 
     //movement
     public float accel = 70f;                   //acceleration/deceleration in air or on the ground
@@ -109,6 +111,7 @@ public class PlayerMove : MonoBehaviour
         }
 
         moveDirection = transform.position + direction;
+
     }
 
     //apply correct player movement (fixedUpdate for physics calculations)
@@ -116,6 +119,7 @@ public class PlayerMove : MonoBehaviour
     {
         //are we grounded
         grounded = IsGrounded();
+        
         //move, rotate, manage speed
         characterMotor.MoveTo(moveDirection, curAccel, 0.7f, true);
 
@@ -131,6 +135,15 @@ public class PlayerMove : MonoBehaviour
             animator.SetBool("Grounded", grounded);
             animator.SetFloat("YVelocity", GetComponent<Rigidbody>().velocity.y);
         }
+
+        // Adding footsteps audio GGJ2018:
+        if (grounded && runSound && !GetComponent<AudioSource>().isPlaying && GetComponent<Rigidbody>().velocity.magnitude > 0)
+        {
+            GetComponent<AudioSource>().volume = 1;
+            GetComponent<AudioSource>().clip = runSound;
+            GetComponent<AudioSource>().Play();
+        }
+
     }
 
     //prevents rigidbody from sliding down slight slopes (read notes in characterMotor class for more info on friction)
