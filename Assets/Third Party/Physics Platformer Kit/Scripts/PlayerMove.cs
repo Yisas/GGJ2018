@@ -68,7 +68,6 @@ public class PlayerMove : MonoBehaviour
 		}
 		
 		//usual setup
-		mainCam = GameObject.FindGameObjectWithTag("MainCamera").transform;
 		dealDamage = GetComponent<DealDamage>();
 		characterMotor = GetComponent<CharacterMotor>();
 		//gets child objects of floorcheckers, and puts them in an array
