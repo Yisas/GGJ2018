@@ -9,6 +9,7 @@ public class PlayerMove : MonoBehaviour
 {
     // GGJ addition
     public int playerID;
+    private bool restrictMovementToOneAxis;
 
 	//setup
 	public Transform mainCam, floorChecks;		//main camera, and floorChecks object. FloorChecks are raycasted down from to check the player is grounded.
@@ -98,6 +99,19 @@ public class PlayerMove : MonoBehaviour
 		//get movement input, set direction to move in
 		float h = Input.GetAxisRaw ("Horizontal " + playerID);
 		float v = Input.GetAxisRaw ("Vertical " +playerID);
+
+        if (restrictMovementToOneAxis)
+        {
+            if (Mathf.Abs(h) > Mathf.Abs(v))
+            {
+                v = 0;
+            }
+            else
+            {
+                h = 0;
+            }
+        }
+
 		direction = (screenMovementForward * v) + (screenMovementRight * h);
 		moveDirection = transform.position + direction;
 		
@@ -227,18 +241,28 @@ public class PlayerMove : MonoBehaviour
 			}
 		}
 	}
-	
-	//push player at jump force
-	public void Jump(Vector3 jumpVelocity)
-	{
-		if(jumpSound)
-		{
-			GetComponent<AudioSource>().volume = 1;
-			GetComponent<AudioSource>().clip = jumpSound;
-			GetComponent<AudioSource>().Play ();
-		}
-		GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, 0f, GetComponent<Rigidbody>().velocity.z);
-		GetComponent<Rigidbody>().AddRelativeForce (jumpVelocity, ForceMode.Impulse);
-		airPressTime = 0f;
-	}
+
+    //push player at jump force
+    public void Jump(Vector3 jumpVelocity)
+    {
+        if (jumpSound)
+        {
+            GetComponent<AudioSource>().volume = 1;
+            GetComponent<AudioSource>().clip = jumpSound;
+            GetComponent<AudioSource>().Play();
+        }
+        GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, 0f, GetComponent<Rigidbody>().velocity.z);
+        GetComponent<Rigidbody>().AddRelativeForce(jumpVelocity, ForceMode.Impulse);
+        airPressTime = 0f;
+    }
+
+    public void ToogleRestrictMovementToOneAxis()
+    {
+        restrictMovementToOneAxis = !restrictMovementToOneAxis;
+    }
+
+    public void SetRestrictMovementToOneAxis(bool value)
+    {
+        restrictMovementToOneAxis = value;
+    }
 }

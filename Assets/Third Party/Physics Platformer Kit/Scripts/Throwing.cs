@@ -122,8 +122,10 @@ public class Throwing : MonoBehaviour
 		//set limits for when player will let go of object
 		joint.breakForce = holdingBreakForce;
 		joint.breakTorque = holdingBreakTorque;
-		//stop player rotating in direction of movement, so they can face the block theyre pulling
-		playerMove.rotateSpeed = 0;
+        //stop player rotating in direction of movement, so they can face the block theyre pulling
+        playerMove.rotateSpeed = 0;
+
+        playerMove.SetRestrictMovementToOneAxis(true);
 	}
 	
 	private void LiftPickup(Collider other)
