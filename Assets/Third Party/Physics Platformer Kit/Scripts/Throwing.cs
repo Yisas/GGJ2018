@@ -14,6 +14,7 @@ public class Throwing : MonoBehaviour
 
     public AudioClip pickUpSound;                               //sound when you pickup/grab an object
     public AudioClip throwSound;                                //sound when you throw an object
+    public AudioClip boxCollideSound;                           //sound when you throw an object
     public GameObject grabBox;                                  //objects inside this trigger box can be picked up by the player (think of this as your reach)
     public float gap = 0.5f;                                    //how high above player to hold objects
     public Vector3 throwForce = new Vector3(0, 5, 7);           //the throw force of the player
@@ -96,6 +97,21 @@ public class Throwing : MonoBehaviour
             {
                 DropPushable();
                 print("'Pushable' object dropped because the 'holdingBreakForce' or 'holdingBreakTorque' was exceeded");
+            }
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Pushable")
+        {
+            AudioSource aus = GetComponent<AudioSource>();
+
+            if (boxCollideSound)
+            {
+                GetComponent<AudioSource>().volume = 0.5f;
+                aus.clip = boxCollideSound;
+                aus.Play();
             }
         }
     }
