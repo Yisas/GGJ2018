@@ -13,6 +13,7 @@ public class PushableObject : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         originalMass = rb.mass;
+        rb.mass = 100;
     }
 
     public void ToggleIsBeingPushed()
