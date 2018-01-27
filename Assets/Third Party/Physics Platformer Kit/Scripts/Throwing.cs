@@ -121,12 +121,18 @@ public class Throwing : MonoBehaviour
 		heldObj.GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
 		AddJoint ();
 		//set limits for when player will let go of object
-		joint.breakForce = holdingBreakForce;
-		joint.breakTorque = holdingBreakTorque;
+		//joint.breakForce = holdingBreakForce;
+		//joint.breakTorque = holdingBreakTorque;
         //stop player rotating in direction of movement, so they can face the block theyre pulling
         playerMove.rotateSpeed = 0;
 
         playerMove.SetRestrictMovementToOneAxis(true);
+
+        PushableObject po = other.GetComponent<PushableObject>();
+        if (po)
+            po.SetIsBeingPushed(true);
+        else
+            Debug.LogError("Unasignsed PushableObject component");
 	}
 	
 	private void LiftPickup(Collider other)
@@ -165,9 +171,18 @@ public class Throwing : MonoBehaviour
 		Destroy (joint);
 		playerMove.rotateSpeed = defRotateSpeed;
         playerMove.SetRestrictMovementToOneAxis(false);
-		heldObj = null;
+
+        PushableObject po = heldObj.GetComponent<PushableObject>();
+        if (po)
+            po.SetIsBeingPushed(false);
+        else
+            Debug.LogError("Unasignsed PushableObject component");
+
+        heldObj = null;
 		timeOfThrow = Time.time;
-	}
+
+        
+    }
 	
 	public void ThrowPickup()
 	{
