@@ -259,7 +259,6 @@ public class PlayerMove : MonoBehaviour
 
     public void SetRestrictMovementToOneAxis(bool value)
     {
-        Debug.Log("hey");
         restrictMovementToOneAxis = value;
     }
 

@@ -109,7 +109,7 @@ public class Throwing : MonoBehaviour
 			if(other.tag == "Pickup" && heldObj == null && timeOfThrow + 0.2f < Time.time)
 				LiftPickup(other);
 			//grab
-			if(other.tag == "Pushable" && heldObj == null && timeOfThrow + 0.2f < Time.time)
+			if(other.tag == "Pushable" && (other.gameObject.layer != LayerMask.NameToLayer(("Invisible Player " + playerID))) && heldObj == null && timeOfThrow + 0.2f < Time.time)
 				GrabPushable(other);
 		}
 	}
