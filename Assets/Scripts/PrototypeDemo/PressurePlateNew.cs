@@ -63,7 +63,7 @@ public class PressurePlateNew : DoorAnimatorBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" || other.tag == "PlayerGround" || other.tag == "Clone")
+        if (other.tag == "Player" || other.tag == "Pushable")
         {
             targetPosition = targetPositionDown;
             myLight.enabled = true;
@@ -81,7 +81,7 @@ public class PressurePlateNew : DoorAnimatorBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player" || other.tag == "PlayerGround" || other.tag == "Clone")
+        if (other.tag == "Player" || other.tag == "Pushable")
         {
             targetPosition = targetPositionStart;
             myLight.enabled = false;
