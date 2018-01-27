@@ -16,8 +16,13 @@ public class GManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Test"))
         {
-            foreach (ResettableObject ro in GameObject.FindObjectsOfType<ResettableObject>())
-                ro.Reset();
+            ResetAllResetableObjects();
         }
+    }
+
+    public void ResetAllResetableObjects()
+    {
+        foreach (ResettableObject ro in GameObject.FindObjectsOfType<ResettableObject>())
+            ro.Reset();
     }
 }
