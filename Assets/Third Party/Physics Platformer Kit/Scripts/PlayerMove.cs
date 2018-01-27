@@ -105,7 +105,7 @@ public class PlayerMove : MonoBehaviour
         if (restrictMovementToOneAxis)
         {
             float magnitude = new Vector2(h, v).magnitude;
-            direction = new Vector3(transform.forward.x * Mathf.Sign(direction.x), 0, transform.forward.z * Mathf.Sign(direction.z)) * (Mathf.Abs(magnitude));
+            direction = new Vector3(transform.forward.x * Mathf.Sign(direction.x) * Mathf.Sign(mainCam.forward.x), 0, transform.forward.z * Mathf.Sign(direction.z) * Mathf.Sign(mainCam.forward.z)) * (Mathf.Abs(magnitude));
         }
 
         moveDirection = transform.position + direction;

@@ -85,7 +85,8 @@ public class Throwing : MonoBehaviour
 		//when grab is released, let go of any pushable objects were holding
 		if (heldObj && heldObj.tag == "Pushable")
 		{
-			characterMotor.RotateToDirection(heldObj.transform.position, rotateToBlockSpeed, true);
+			//characterMotor.RotateToDirection(heldObj.transform.position, rotateToBlockSpeed, true);
+
 			if(Input.GetButtonUp ("Grab " + playerID))
 			{
 				DropPushable();
@@ -163,6 +164,7 @@ public class Throwing : MonoBehaviour
 		heldObj.GetComponent<Rigidbody>().interpolation = objectDefInterpolation;
 		Destroy (joint);
 		playerMove.rotateSpeed = defRotateSpeed;
+        playerMove.SetRestrictMovementToOneAxis(false);
 		heldObj = null;
 		timeOfThrow = Time.time;
 	}
