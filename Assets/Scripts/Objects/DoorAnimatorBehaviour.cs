@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DoorAnimatorBehaviour : MonoBehaviour {
 
+    public bool doorStaysOpen = true;
     public Animator animator;
     public bool isOpen = false;
     private bool firstAnimation = false;
@@ -19,6 +20,11 @@ public class DoorAnimatorBehaviour : MonoBehaviour {
 
     public void ToggleOpen()
     {
+        if(isOpen && doorStaysOpen)
+        {
+            return;
+        }
+
         FirstAnimationCheck();
 
         isOpen = !isOpen;
@@ -27,6 +33,11 @@ public class DoorAnimatorBehaviour : MonoBehaviour {
 
     public void SetOpen()
     {
+        if (isOpen && doorStaysOpen)
+        {
+            return;
+        }
+
         FirstAnimationCheck();
 
         isOpen = true;
@@ -35,6 +46,11 @@ public class DoorAnimatorBehaviour : MonoBehaviour {
 
     public void SetClosed()
     {
+        if (isOpen && doorStaysOpen)
+        {
+            return;
+        }
+
         FirstAnimationCheck();
 
         isOpen = false;
