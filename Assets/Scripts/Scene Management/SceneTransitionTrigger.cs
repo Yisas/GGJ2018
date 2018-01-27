@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SceneTransitionTrigger : MonoBehaviour {
 
+    public AudioSource audioSource;
     private bool player1In = false;
     private bool player2In = false;
 
@@ -15,6 +16,13 @@ public class SceneTransitionTrigger : MonoBehaviour {
             if(menu != null)
             {
                 menu.GetComponent<StartOptions>().NextScene();
+
+                audioSource.Play();
+                foreach(Transform child in transform)
+                {
+                    child.gameObject.SetActive(true);
+                }
+
                 this.enabled = false;
             }
 
