@@ -9,7 +9,7 @@ public class PlayerMove : MonoBehaviour
 {
     // GGJ addition
     public int playerID;
-    private bool restrictMovementToOneAxis;
+    private bool restrictMovementToOneAxis = false;
 
     //setup
     public Transform mainCam, floorChecks;      //main camera, and floorChecks object. FloorChecks are raycasted down from to check the player is grounded.
@@ -259,6 +259,12 @@ public class PlayerMove : MonoBehaviour
 
     public void SetRestrictMovementToOneAxis(bool value)
     {
+        Debug.Log("hey");
         restrictMovementToOneAxis = value;
+    }
+
+    public bool isRestrictedMovementToOneAxis()
+    {
+        return restrictMovementToOneAxis;
     }
 }
