@@ -40,8 +40,8 @@ public class LightDetector : MonoBehaviour {
             }
         }
         if (isVisible)
-            print("Player is visible");
-        else
             print("Player is not visible");
+        else
+            print("Player is visible");
     }
 }
