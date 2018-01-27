@@ -5,10 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class Door : DoorAnimatorBehaviour
 {
-
     public int pressurePlateCount;
     private int pressedCount;
-    private bool firstAnimation = false;
 
     private void Start()
     {
