@@ -7,6 +7,9 @@ using System.Collections;
 [RequireComponent(typeof(AudioSource))]
 public class PlayerMove : MonoBehaviour 
 {
+    // GGJ addition
+    public int playerID;
+
 	//setup
 	public Transform mainCam, floorChecks;		//main camera, and floorChecks object. FloorChecks are raycasted down from to check the player is grounded.
 	public Animator animator;					//object with animation controller on, which you want to animate
@@ -93,8 +96,8 @@ public class PlayerMove : MonoBehaviour
 		screenMovementRight = screenMovementSpace * Vector3.right;
 		
 		//get movement input, set direction to move in
-		float h = Input.GetAxisRaw ("Horizontal");
-		float v = Input.GetAxisRaw ("Vertical");
+		float h = Input.GetAxisRaw ("Horizontal " + playerID);
+		float v = Input.GetAxisRaw ("Vertical " +playerID);
 		direction = (screenMovementForward * v) + (screenMovementRight * h);
 		moveDirection = transform.position + direction;
 		
@@ -203,14 +206,14 @@ public class PlayerMove : MonoBehaviour
 			GetComponent<AudioSource>().Play ();
 		}
 		//if we press jump in the air, save the time
-		if (Input.GetButtonDown ("Jump") && !grounded)
+		if (Input.GetButtonDown ("Jump " + playerID) && !grounded)
 			airPressTime = Time.time;
 		
 		//if were on ground within slope limit
 		if (grounded && slope < slopeLimit)
 		{
 			//and we press jump, or we pressed jump justt before hitting the ground
-			if (Input.GetButtonDown ("Jump") || airPressTime + jumpLeniancy > Time.time)
+			if (Input.GetButtonDown ("Jump " + playerID) || airPressTime + jumpLeniancy > Time.time)
 			{	
 				//increment our jump type if we haven't been on the ground for long
 				onJump = (groundedCount < jumpDelay) ? Mathf.Min(2, onJump + 1) : 0;

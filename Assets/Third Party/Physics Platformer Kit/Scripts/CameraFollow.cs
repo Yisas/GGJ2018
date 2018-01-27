@@ -2,6 +2,9 @@
 
 public class CameraFollow : MonoBehaviour 
 {
+    // GGJ addition
+    public int playerID;
+
 	public Transform target;									//object camera will focus on and follow
 	public Vector3 targetOffset =  new Vector3(0f, 3.5f, 7);	//how far back should camera be from the lookTarget
 	public float followSpeed = 6;								//how fast the camera moves to its intended position
@@ -88,7 +91,7 @@ public class CameraFollow : MonoBehaviour
 		followTarget.Translate(targetOffset, Space.Self);
 		
 		//rotate the followTarget around the target with input
-		float axis = Input.GetAxis ("CamHorizontal") * inputRotationSpeed * Time.deltaTime;
+		float axis = Input.GetAxis ("CamHorizontal " + playerID) * inputRotationSpeed * Time.deltaTime;
 		followTarget.RotateAround (target.position, Vector3.up, axis);
 		
 		//camera moves to the followTargets position

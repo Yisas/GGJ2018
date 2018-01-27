@@ -8,6 +8,9 @@ using System.Collections;
 [RequireComponent(typeof(PlayerMove))]
 public class Throwing : MonoBehaviour 
 {
+    // GGJ additions
+    public int playerID;
+
 	public AudioClip pickUpSound;								//sound when you pickup/grab an object
 	public AudioClip throwSound;								//sound when you throw an object
 	public GameObject grabBox;									//objects inside this trigger box can be picked up by the player (think of this as your reach)
@@ -62,7 +65,7 @@ public class Throwing : MonoBehaviour
 	void Update()
 	{
 		//when we press grab button, throw object if we're holding one
-		if (Input.GetButtonDown ("Grab") && heldObj && Time.time > timeOfPickup + 0.1f)
+		if (Input.GetButtonDown ("Grab " + playerID) && heldObj && Time.time > timeOfPickup + 0.1f)
 		{
 			if(heldObj.tag == "Pickup") 
 				ThrowPickup();
@@ -83,7 +86,7 @@ public class Throwing : MonoBehaviour
 		if (heldObj && heldObj.tag == "Pushable")
 		{
 			characterMotor.RotateToDirection(heldObj.transform.position, rotateToBlockSpeed, true);
-			if(Input.GetButtonUp ("Grab"))
+			if(Input.GetButtonUp ("Grab " + playerID))
 			{
 				DropPushable();
 			}
@@ -99,7 +102,7 @@ public class Throwing : MonoBehaviour
 	void OnTriggerStay(Collider other)
 	{
 		//if grab is pressed and an object is inside the players "grabBox" trigger
-		if(Input.GetButton("Grab"))
+		if(Input.GetButton("Grab " + playerID))
 		{
 			//pickup
 			if(other.tag == "Pickup" && heldObj == null && timeOfThrow + 0.2f < Time.time)
