@@ -3,52 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class Door : MonoBehaviour {
+public class Door : DoorAnimatorBehaviour
+{
 
     public int pressurePlateCount;
     private int pressedCount;
     private bool firstAnimation = false;
 
-    public bool isOpen = false;
-
-    public Animator animator;
-
     private void Start()
     {
         pressedCount = pressurePlateCount;
-    }
-
-    public void ToggleOpen()
-    {
-        FirstAnimationCheck();
-
-        isOpen = !isOpen;
-        animator.SetBool("Open", isOpen);
-    }
-
-    public void SetOpen()
-    {
-        FirstAnimationCheck();
-
-        isOpen = true;
-        animator.SetBool("Open", isOpen);
-    }
-
-    public void SetClosed()
-    {
-        FirstAnimationCheck();
-
-        isOpen = false;
-        animator.SetBool("Open", isOpen);
-    }
-
-    private void FirstAnimationCheck()
-    {
-        if (!firstAnimation)
-        {
-            firstAnimation = true;
-            animator.SetTrigger("Unlocked");
-        }
     }
 
     public void DecCount()

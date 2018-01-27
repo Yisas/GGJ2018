@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PressurePlateNew : MonoBehaviour
+public class PressurePlateNew : DoorAnimatorBehaviour
 {
-
     public GameObject target;
     private Light myLight;
     private float targetPositionStart;
@@ -56,6 +55,8 @@ public class PressurePlateNew : MonoBehaviour
             isActive = false;
 
             offSound.Play();
+
+            SetClosed();
         }
     }
 
@@ -69,6 +70,9 @@ public class PressurePlateNew : MonoBehaviour
             isActive = true;
 
             onSound.Play();
+
+            SetOpen();
+
             Door[] doors = target.GetComponentsInChildren<Door>();
             foreach (Door d in doors)
               d.DecCount();
@@ -82,6 +86,8 @@ public class PressurePlateNew : MonoBehaviour
             targetPosition = targetPositionStart;
             myLight.enabled = false;
             isActive = false;
+
+            SetClosed();
 
             Door[] doors = target.GetComponentsInChildren<Door>();
             foreach (Door d in doors)
