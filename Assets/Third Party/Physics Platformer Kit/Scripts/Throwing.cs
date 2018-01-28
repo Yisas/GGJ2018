@@ -11,6 +11,8 @@ public class Throwing : MonoBehaviour
     // GGJ additions
     public int playerID;
     private ResetButton resetButton;
+    private bool canPushButton = false;
+    private ResetButton button = null;
 
     public AudioClip pickUpSound;                               //sound when you pickup/grab an object
     public AudioClip throwSound;                                //sound when you throw an object
@@ -81,6 +83,19 @@ public class Throwing : MonoBehaviour
                 DropPickup();
 
         }
+
+        if (Input.GetButtonDown("Grab " + playerID) && heldObj == null && canPushButton)
+        {
+            animator.SetTrigger("PushSingleMotion");
+
+            if (button)
+                button.Push();
+            else
+                Debug.LogError("Button reference is missing dude!");
+
+            return;
+        }
+
         //set animation value for arms layer
         if (animator)
             if (heldObj && heldObj.tag == "Pickup")
@@ -128,22 +143,26 @@ public class Throwing : MonoBehaviour
                 }
             }
         }
+
+        if (other.tag == "Button")
+        {
+            canPushButton = true;
+            button = other.GetComponent<ResetButton>();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Button")
+        {
+            canPushButton = false;
+            button = null;
+        }
     }
 
     //pickup/grab
     void OnTriggerStay(Collider other)
     {
-        if (Input.GetButtonDown("Grab " + playerID))
-        {
-            if (other.tag == "Button")
-            {
-                animator.SetTrigger("PushSingleMotion");
-                other.GetComponent<ResetButton>().Push();
-                return;
-            }
-        }
-
-
         //if grab is pressed and an object is inside the players "grabBox" trigger
         if (Input.GetButton("Grab " + playerID))
         {
