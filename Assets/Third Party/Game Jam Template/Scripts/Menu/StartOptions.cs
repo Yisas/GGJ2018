@@ -39,8 +39,23 @@ public class StartOptions : MonoBehaviour {
         fadeImage.color = menuSettingsData.sceneChangeFadeColor;
 	}
 
+    private void Update()
+    {
+        if (Input.GetButtonDown("Next Level"))
+        {
+            Debug.Log("Skipping to next level");
+            NextScene();
+        }
 
-	public void StartButtonClicked()
+        if(Input.GetButtonDown("Previous Level"))
+        {
+            Debug.Log("Skipping to previous level");
+            PreviousScene();
+        }
+    }
+
+
+    public void StartButtonClicked()
 	{
 		//If changeMusicOnStart is true, fade out volume of music group of AudioMixer by calling FadeDown function of PlayMusic
 		//To change fade time, change length of animation "FadeToColor"
@@ -77,6 +92,25 @@ public class StartOptions : MonoBehaviour {
         }
 
         sceneToStart += 1;
+
+        //Use invoke to delay calling of LoadDelayed by half the length of fadeColorAnimationClip
+        Invoke("LoadDelayed", menuSettingsData.menuFadeTime);
+
+        StartCoroutine(FadeCanvasGroupAlpha(0f, 1f, fadeOutImageCanvasGroup));
+    }
+
+    public void PreviousScene()
+    {
+        //If changeMusicOnStart is true, fade out volume of music group of AudioMixer by calling FadeDown function of PlayMusic
+        //To change fade time, change length of animation "FadeToColor"
+        if (menuSettingsData.musicLoopToChangeTo != null)
+        {
+            playMusic.FadeDown(menuSettingsData.menuFadeTime);
+        }
+
+        sceneToStart -= 1;
+        if (sceneToStart <= 0)
+            sceneToStart = 1;
 
         //Use invoke to delay calling of LoadDelayed by half the length of fadeColorAnimationClip
         Invoke("LoadDelayed", menuSettingsData.menuFadeTime);
