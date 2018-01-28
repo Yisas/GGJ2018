@@ -142,8 +142,8 @@ public class Throwing : MonoBehaviour
         {
             if (other.tag == "Button")
             {
-                resetButton = other.GetComponent<ResetButton>();
                 animator.SetTrigger("PushSingleMotion");
+                other.GetComponent<ResetButton>().Push();
                 return;
             }
         }
