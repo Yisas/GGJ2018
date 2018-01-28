@@ -10,11 +10,17 @@ public class TutorialTrigger : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        UIManager.Instance.showText(myText);
+        if (other.tag == "Player")
+        {
+            UIManager.Instance.showText(myText, other.GetComponent<PlayerMove>().playerID);
+        }
     }
 
     void OnTriggerExit(Collider other)
     {
-        UIManager.Instance.hideText();
+        if (other.tag == "Player")
+        {
+            UIManager.Instance.hideText(other.GetComponent<PlayerMove>().playerID);
+        }
     }
 }
