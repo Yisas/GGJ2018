@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GManager : MonoBehaviour
 {
+    public bool resetPlayers = false;
 
     // Use this for initialization
     void Start()
@@ -23,6 +24,12 @@ public class GManager : MonoBehaviour
     public void ResetAllResetableObjects()
     {
         foreach (ResettableObject ro in GameObject.FindObjectsOfType<ResettableObject>())
+        {
+            if(!resetPlayers && ro.gameObject.tag == "Player")
+            {
+                continue;
+            }
             ro.Reset();
+        }
     }
 }
