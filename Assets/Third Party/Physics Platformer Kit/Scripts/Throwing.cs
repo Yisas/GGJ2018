@@ -122,15 +122,20 @@ public class Throwing : MonoBehaviour
     //pickup/grab
     void OnTriggerStay(Collider other)
     {
-        //if grab is pressed and an object is inside the players "grabBox" trigger
-        if (Input.GetButton("Grab " + playerID))
+        if(Input.GetButtonDown("Grab " + playerID))
         {
             if (other.tag == "Button")
             {
                 resetButton = other.GetComponent<ResetButton>();
                 animator.SetTrigger("PushSingleMotion");
+                return;
             }
+        }
 
+
+        //if grab is pressed and an object is inside the players "grabBox" trigger
+        if (Input.GetButton("Grab " + playerID))
+        {
             //pickup
             if (other.tag == "Pickup" && heldObj == null && timeOfThrow + 0.2f < Time.time)
             {
