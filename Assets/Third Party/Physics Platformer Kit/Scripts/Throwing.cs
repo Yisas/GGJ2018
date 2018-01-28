@@ -224,7 +224,10 @@ public class Throwing : MonoBehaviour
     private void DropPickup()
     {
         if (heldObj.tag == "Pickup")
+        {
             heldObj.transform.position = dropBox.transform.position;
+            heldObj.GetComponent<Rigidbody>().mass /= weightChange;
+        }
 
         heldObj.GetComponent<Rigidbody>().interpolation = objectDefInterpolation;
         Destroy(joint);
