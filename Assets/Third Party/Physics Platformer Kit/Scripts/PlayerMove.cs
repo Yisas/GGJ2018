@@ -9,6 +9,7 @@ public class PlayerMove : MonoBehaviour
 {
     // GGJ addition
     public int playerID;
+    public float cameraDelayTimerBeforeRespawn;
     private bool restrictMovementToOneAxis = false;
 
     //setup
