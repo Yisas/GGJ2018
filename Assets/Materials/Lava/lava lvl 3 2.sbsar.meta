@@ -1,20 +1,53 @@
 fileFormatVersion: 2
-guid: 90e7f0cb2b702414a9425300ec2db2a3
-timeCreated: 1517168535
+guid: 3680bb49ce3b86a4e85ab7940cadb8cd
+timeCreated: 1517167512
 licenseType: Free
 SubstanceImporter:
   externalObjects: {}
   serializedVersion: 5
   materialInstances:
   - serializedVersion: 16
-    name: Cartoon_Pebbles_floor
-    prototypeName: Cartoon_Pebbles
+    name: laval lvl 3 2
+    prototypeName: flowingLava_v35_engine_4_5
     shaderName: 
     shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-    shaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP _PARALLAXMAP
+    shaderKeywords: _EMISSION _GLOSSYREFLECTIONS_OFF _METALLICGLOSSMAP _NORMALMAP
+      _PARALLAXMAP _SPECULARHIGHLIGHTS_OFF
     renderQueue: -1
     lightmapFlags: 1
     inputs:
+    - name: $randomseed
+      value:
+        scalar[0]: 6544
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+        stringvalue: 
+    - name: craksquantity
+      value:
+        scalar[0]: 0.071
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+        stringvalue: 
+    - name: craksdensity
+      value:
+        scalar[0]: 0.438
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+        stringvalue: 
+    - name: $time
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+        stringvalue: 
     - name: $outputsize
       value:
         scalar[0]: 8
@@ -23,7 +56,39 @@ SubstanceImporter:
         scalar[3]: 0
         texture: {instanceID: 0}
         stringvalue: 
-    - name: $randomseed
+    - name: lavatemphigh
+      value:
+        scalar[0]: 0.137
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+        stringvalue: 
+    - name: lavatemplow
+      value:
+        scalar[0]: 0.787
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+        stringvalue: 
+    - name: fLowa
+      value:
+        scalar[0]: 0.24
+        scalar[1]: -0.033
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+        stringvalue: 
+    - name: mainFlowAutoSpeed
+      value:
+        scalar[0]: 0.12
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+        stringvalue: 
+    - name: flowb
       value:
         scalar[0]: 0
         scalar[1]: 0
@@ -31,79 +96,23 @@ SubstanceImporter:
         scalar[3]: 0
         texture: {instanceID: 0}
         stringvalue: 
-    - name: Stone_Size
+    - name: stretchFlowAutoSpeed
       value:
-        scalar[0]: 0.917
+        scalar[0]: 0.08
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
         stringvalue: 
-    - name: Emboss_Intensity
+    - name: flowdistortion
       value:
-        scalar[0]: -2.6
+        scalar[0]: 17.2
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
         stringvalue: 
-    - name: Light_Angle
-      value:
-        scalar[0]: 1
-        scalar[1]: 0
-        scalar[2]: 0
-        scalar[3]: 0
-        texture: {instanceID: 0}
-        stringvalue: 
-    - name: Shape_Warp_1
-      value:
-        scalar[0]: 6
-        scalar[1]: 0
-        scalar[2]: 0
-        scalar[3]: 0
-        texture: {instanceID: 0}
-        stringvalue: 
-    - name: Shape_Warp_2
-      value:
-        scalar[0]: 6.21
-        scalar[1]: 0
-        scalar[2]: 0
-        scalar[3]: 0
-        texture: {instanceID: 0}
-        stringvalue: 
-    - name: Stone_Emboss_Highlight_Color
-      value:
-        scalar[0]: 0.820066
-        scalar[1]: 0.871092
-        scalar[2]: 0.929412
-        scalar[3]: 1
-        texture: {instanceID: 0}
-        stringvalue: 
-    - name: Stone_Emboss_Shadow_Color
-      value:
-        scalar[0]: 0.811765
-        scalar[1]: 0.690196
-        scalar[2]: 0.592157
-        scalar[3]: 1
-        texture: {instanceID: 0}
-        stringvalue: 
-    - name: Hue_Shift
-      value:
-        scalar[0]: 1
-        scalar[1]: 0
-        scalar[2]: 0
-        scalar[3]: 0
-        texture: {instanceID: 0}
-        stringvalue: 
-    - name: Saturation
-      value:
-        scalar[0]: 0.314
-        scalar[1]: 0
-        scalar[2]: 0
-        scalar[3]: 0
-        texture: {instanceID: 0}
-        stringvalue: 
-    - name: luminosity
+    - name: crustWear
       value:
         scalar[0]: 0.5
         scalar[1]: 0
@@ -111,33 +120,17 @@ SubstanceImporter:
         scalar[3]: 0
         texture: {instanceID: 0}
         stringvalue: 
-    - name: Contrast
+    - name: crustOcc
       value:
-        scalar[0]: 0.29
+        scalar[0]: 0.5
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
         stringvalue: 
-    - name: Depth
+    - name: crustMoon
       value:
-        scalar[0]: 1
-        scalar[1]: 0
-        scalar[2]: 0
-        scalar[3]: 0
-        texture: {instanceID: 0}
-        stringvalue: 
-    - name: Relief
-      value:
-        scalar[0]: 12.2
-        scalar[1]: 0
-        scalar[2]: 0
-        scalar[3]: 0
-        texture: {instanceID: 0}
-        stringvalue: 
-    - name: Normal_Intensity
-      value:
-        scalar[0]: 0.448
+        scalar[0]: 0.5
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -146,16 +139,16 @@ SubstanceImporter:
     materialInformation:
       serializedVersion: 5
       offset: {x: 0, y: 0}
-      scale: {x: 4, y: 14}
+      scale: {x: 8, y: 8}
       generateMipmaps: 1
       generateAllOutputs: 0
-      animationUpdateRate: 42
+      animationUpdateRate: 60
     materialProperties:
       serializedVersion: 3
       texEnvs:
       - _BumpMap:
           texture: {instanceID: 0}
-          scale: {x: 4, y: 14}
+          scale: {x: 4, y: 8}
           offset: {x: 0, y: 0}
       - _DetailAlbedoMap:
           texture: {instanceID: 0}
@@ -171,15 +164,15 @@ SubstanceImporter:
           offset: {x: 0, y: 0}
       - _EmissionMap:
           texture: {instanceID: 0}
-          scale: {x: 4, y: 14}
+          scale: {x: 8, y: 8}
           offset: {x: 0, y: 0}
       - _MainTex:
           texture: {instanceID: 0}
-          scale: {x: 4, y: 14}
+          scale: {x: 8, y: 8}
           offset: {x: 0, y: 0}
       - _MetallicGlossMap:
           texture: {instanceID: 0}
-          scale: {x: 4, y: 14}
+          scale: {x: 4, y: 8}
           offset: {x: 0, y: 0}
       - _OcclusionMap:
           texture: {instanceID: 0}
@@ -187,45 +180,50 @@ SubstanceImporter:
           offset: {x: 0, y: 0}
       - _ParallaxMap:
           texture: {instanceID: 0}
-          scale: {x: 4, y: 14}
+          scale: {x: 4, y: 8}
           offset: {x: 0, y: 0}
       floats:
       - _BumpScale: 1
       - _Cutoff: 0.5
       - _DetailNormalMapScale: 1
       - _DstBlend: 0
-      - _GlossMapScale: 0
+      - _GlossMapScale: 1
       - _Glossiness: 0.5
-      - _GlossyReflections: 1
+      - _GlossyReflections: 0
       - _Metallic: 0
       - _Mode: 0
       - _OcclusionStrength: 1
-      - _Parallax: 0.08
+      - _Parallax: 0.02
       - _SmoothnessTextureChannel: 0
-      - _SpecularHighlights: 1
+      - _SpecularHighlights: 0
       - _SrcBlend: 1
       - _UVSec: 0
       - _ZWrite: 1
       colors:
       - _Color: {r: 1, g: 1, b: 1, a: 1}
-      - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+      - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     textureParameters:
-    - name: Cartoon_Pebbles_floor_baseColor
+    - name: laval lvl 3 2_basecolor
       alphaSource: 6
       filterMode: 1
       aniso: 1
       wrapMode: 0
-    - name: Cartoon_Pebbles_floor_normal
+    - name: laval lvl 3 2_normal
       alphaSource: 0
       filterMode: 1
       aniso: 1
       wrapMode: 0
-    - name: Cartoon_Pebbles_floor_metallic
+    - name: laval lvl 3 2_metallic
       alphaSource: 7
       filterMode: 1
       aniso: 1
       wrapMode: 0
-    - name: Cartoon_Pebbles_floor_height
+    - name: laval lvl 3 2_height
+      alphaSource: 0
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    - name: laval lvl 3 2_emissive
       alphaSource: 0
       filterMode: 1
       aniso: 1
@@ -233,23 +231,26 @@ SubstanceImporter:
     textureAssignments:
     - shaderProp: _MainTex
       material: {instanceID: 0}
-      baseUID: 1483058680
+      baseUID: 3261063290
     - shaderProp: _BumpMap
       material: {instanceID: 0}
-      baseUID: 1483058682
+      baseUID: 3261063288
+    - shaderProp: _EmissionMap
+      material: {instanceID: 0}
+      baseUID: 3283168657
     - shaderProp: _MetallicGlossMap
       material: {instanceID: 0}
-      baseUID: 1483058686
+      baseUID: 3261063292
     - shaderProp: _ParallaxMap
       material: {instanceID: 0}
-      baseUID: 1508538780
+      baseUID: 3283173372
     buildTargetSettings:
     - serializedVersion: 2
       buildTarget: 
       textureWidth: 512
       textureHeight: 512
       textureFormat: 0
-      loadingBehavior: 1
+      loadingBehavior: 2
   deletedPrototypes: []
   userData: 
   assetBundleName: 

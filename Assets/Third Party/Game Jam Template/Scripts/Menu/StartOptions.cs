@@ -99,6 +99,23 @@ public class StartOptions : MonoBehaviour {
         StartCoroutine(FadeCanvasGroupAlpha(0f, 1f, fadeOutImageCanvasGroup));
     }
 
+    public void RestartGame()
+    {
+        //If changeMusicOnStart is true, fade out volume of music group of AudioMixer by calling FadeDown function of PlayMusic
+        //To change fade time, change length of animation "FadeToColor"
+        if (menuSettingsData.musicLoopToChangeTo != null)
+        {
+            playMusic.FadeDown(menuSettingsData.menuFadeTime);
+        }
+
+        sceneToStart = 0;
+
+        //Use invoke to delay calling of LoadDelayed by half the length of fadeColorAnimationClip
+        Invoke("LoadDelayed", menuSettingsData.menuFadeTime);
+
+        StartCoroutine(FadeCanvasGroupAlpha(0f, 1f, fadeOutImageCanvasGroup, true));
+    }
+
     public void PreviousScene()
     {
         //If changeMusicOnStart is true, fade out volume of music group of AudioMixer by calling FadeDown function of PlayMusic
@@ -174,7 +191,7 @@ public class StartOptions : MonoBehaviour {
         StartCoroutine(FadeCanvasGroupAlpha(1f,0f, menuCanvasGroup));
 	}
 
-    public IEnumerator FadeCanvasGroupAlpha(float startAlpha, float endAlpha, CanvasGroup canvasGroupToFadeAlpha)
+    public IEnumerator FadeCanvasGroupAlpha(float startAlpha, float endAlpha, CanvasGroup canvasGroupToFadeAlpha, bool destroy = false)
     {
 
         float elapsedTime = 0f;
@@ -189,6 +206,8 @@ public class StartOptions : MonoBehaviour {
         }
 
         HideDelayed();
+        if (destroy)
+            Destroy(gameObject);
         Debug.Log("Coroutine done. Game started in same scene! Put your game starting stuff here.");
     }
 

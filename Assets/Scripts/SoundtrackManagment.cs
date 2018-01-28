@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundtrackManagment : MonoBehaviour {
 
     AudioSource source;
-    float volumeControl = 0.5f;
+    float volumeControl = 0.2f;
 
     void Awake()
     {
