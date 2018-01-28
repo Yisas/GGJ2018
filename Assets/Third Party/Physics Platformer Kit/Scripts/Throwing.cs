@@ -73,10 +73,13 @@ public class Throwing : MonoBehaviour
     void Update()
     {
         //when we press grab button, throw object if we're holding one
-        if (Input.GetButtonDown("Grab " + playerID) && heldObj && Time.time > timeOfPickup + 0.1f)
+        if (Input.GetButtonDown("Grab " + playerID) && heldObj)
         {
-            if (heldObj.tag == "Pickup")
+            if (heldObj.tag == "Pickup" && Time.time > timeOfPickup + 0.1f)
                 ThrowPickup();
+            else if (heldObj.tag == "Pushable")
+                DropPickup();
+
         }
         //set animation value for arms layer
         if (animator)
@@ -130,7 +133,7 @@ public class Throwing : MonoBehaviour
     //pickup/grab
     void OnTriggerStay(Collider other)
     {
-        if(Input.GetButtonDown("Grab " + playerID))
+        if (Input.GetButtonDown("Grab " + playerID))
         {
             if (other.tag == "Button")
             {
@@ -161,7 +164,7 @@ public class Throwing : MonoBehaviour
 
     public void PushButton()
     {
-        if(resetButton)
+        if (resetButton)
             resetButton.Push();
 
         resetButton = null;
@@ -220,7 +223,7 @@ public class Throwing : MonoBehaviour
 
     private void DropPickup()
     {
-        if(heldObj.tag == "Pickup")
+        if (heldObj.tag == "Pickup")
             heldObj.transform.position = dropBox.transform.position;
 
         heldObj.GetComponent<Rigidbody>().interpolation = objectDefInterpolation;
@@ -228,11 +231,14 @@ public class Throwing : MonoBehaviour
         playerMove.rotateSpeed = defRotateSpeed;
         playerMove.SetRestrictMovementToOneAxis(false);
 
-        PushableObject po = heldObj.GetComponent<PushableObject>();
-        //if (po)
-        //    po.SetIsBeingPushed(false);
-        //else
-        //    Debug.LogError("Unasignsed PushableObject component");
+        if (heldObj.tag == "Pushable")
+        {
+            PushableObject po = heldObj.GetComponent<PushableObject>();
+            if (po)
+                po.SetIsBeingPushed(false);
+            else
+                Debug.LogError("Unasignsed PushableObject component");
+        }
 
         heldObj = null;
         timeOfThrow = Time.time;
