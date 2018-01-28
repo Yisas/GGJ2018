@@ -27,4 +27,16 @@ public class ResettableObject : MonoBehaviour {
         transform.position = ogPosition;
         transform.rotation = ogRotation;
     }
+
+    public Vector3 RespawnPosition
+    {
+        get { return ogPosition; }
+        set { ogPosition = value; }
+    }
+
+    public Quaternion RespawnRotation
+    {
+        get { return ogRotation; }
+        set { ogRotation = value; }
+    }
 }
