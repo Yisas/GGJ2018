@@ -220,7 +220,9 @@ public class Throwing : MonoBehaviour
 
     private void DropPickup()
     {
-        heldObj.transform.position = dropBox.transform.position;
+        if(heldObj.tag == "Pickup")
+            heldObj.transform.position = dropBox.transform.position;
+
         heldObj.GetComponent<Rigidbody>().interpolation = objectDefInterpolation;
         Destroy(joint);
         playerMove.rotateSpeed = defRotateSpeed;
