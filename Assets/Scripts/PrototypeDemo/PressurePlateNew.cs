@@ -12,6 +12,8 @@ public class PressurePlateNew : DoorAnimatorBehaviour
     public bool isActive;
     public GameObject[] wires;
 
+    private GameObject objectOnMe = null;
+
     public AudioSource onSound;
     public AudioSource offSound;
 
@@ -65,6 +67,24 @@ public class PressurePlateNew : DoorAnimatorBehaviour
     {
         if (other.tag == "Player" || other.tag == "Pushable" || other.tag == "Pickup")
         {
+            if(objectOnMe != null)
+            {
+                Debug.Log("Object already on me, do nothing");
+                return;
+            }
+            else
+            {
+                objectOnMe = other.gameObject;
+            }
+
+            Open();
+        }
+    }
+
+    private void Open()
+    {
+        if (!isOpen)
+        {
             targetPosition = targetPositionDown;
             myLight.enabled = true;
             isActive = true;
@@ -75,7 +95,16 @@ public class PressurePlateNew : DoorAnimatorBehaviour
 
             Door[] doors = target.GetComponentsInChildren<Door>();
             foreach (Door d in doors)
-              d.DecCount();
+                d.DecCount();
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(objectOnMe == null && (other.tag == "Player" || other.tag == "Pushable" || other.tag == "Pickup" ))
+        {
+            Open();
+            objectOnMe = other.gameObject;
         }
     }
 
@@ -83,18 +112,26 @@ public class PressurePlateNew : DoorAnimatorBehaviour
     {
         if (other.tag == "Player" || other.tag == "Pushable" || other.tag == "Pickup")
         {
+            if(other.gameObject != objectOnMe)
+            {
+                return;
+            }
+            else
+            {
+                objectOnMe = null;
+            }
+
             targetPosition = targetPositionStart;
             myLight.enabled = false;
             isActive = false;
 
             SetClosed();
+            offSound.Play();
 
             Door[] doors = target.GetComponentsInChildren<Door>();
             foreach (Door d in doors)
                 d.IncCount();
         }
-
-        offSound.Play();
     }
 }
 
