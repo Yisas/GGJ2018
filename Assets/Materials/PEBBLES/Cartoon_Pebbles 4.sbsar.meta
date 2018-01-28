@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 90e7f0cb2b702414a9425300ec2db2a3
-timeCreated: 1517168535
+guid: 833d67f571473584c8f0e33b01530213
+timeCreated: 1517168872
 licenseType: Free
 SubstanceImporter:
   externalObjects: {}
   serializedVersion: 5
   materialInstances:
   - serializedVersion: 16
-    name: Cartoon_Pebbles_floor
+    name: pebbles lvl3-1
     prototypeName: Cartoon_Pebbles
     shaderName: 
     shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
@@ -155,7 +155,7 @@ SubstanceImporter:
       texEnvs:
       - _BumpMap:
           texture: {instanceID: 0}
-          scale: {x: 4, y: 14}
+          scale: {x: 1, y: 1}
           offset: {x: 0, y: 0}
       - _DetailAlbedoMap:
           texture: {instanceID: 0}
@@ -171,15 +171,15 @@ SubstanceImporter:
           offset: {x: 0, y: 0}
       - _EmissionMap:
           texture: {instanceID: 0}
-          scale: {x: 4, y: 14}
+          scale: {x: 1, y: 1}
           offset: {x: 0, y: 0}
       - _MainTex:
           texture: {instanceID: 0}
-          scale: {x: 4, y: 14}
+          scale: {x: 1, y: 1}
           offset: {x: 0, y: 0}
       - _MetallicGlossMap:
           texture: {instanceID: 0}
-          scale: {x: 4, y: 14}
+          scale: {x: 1, y: 1}
           offset: {x: 0, y: 0}
       - _OcclusionMap:
           texture: {instanceID: 0}
@@ -187,7 +187,7 @@ SubstanceImporter:
           offset: {x: 0, y: 0}
       - _ParallaxMap:
           texture: {instanceID: 0}
-          scale: {x: 4, y: 14}
+          scale: {x: 1, y: 1}
           offset: {x: 0, y: 0}
       floats:
       - _BumpScale: 1
@@ -210,22 +210,22 @@ SubstanceImporter:
       - _Color: {r: 1, g: 1, b: 1, a: 1}
       - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     textureParameters:
-    - name: Cartoon_Pebbles_floor_baseColor
+    - name: pebbles lvl3-1_baseColor
       alphaSource: 6
       filterMode: 1
       aniso: 1
       wrapMode: 0
-    - name: Cartoon_Pebbles_floor_normal
+    - name: pebbles lvl3-1_normal
       alphaSource: 0
       filterMode: 1
       aniso: 1
       wrapMode: 0
-    - name: Cartoon_Pebbles_floor_metallic
+    - name: pebbles lvl3-1_metallic
       alphaSource: 7
       filterMode: 1
       aniso: 1
       wrapMode: 0
-    - name: Cartoon_Pebbles_floor_height
+    - name: pebbles lvl3-1_height
       alphaSource: 0
       filterMode: 1
       aniso: 1
