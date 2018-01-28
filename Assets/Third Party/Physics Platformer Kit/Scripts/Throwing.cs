@@ -21,6 +21,7 @@ public class Throwing : MonoBehaviour
     public GameObject particlesObjectAppear;
 
     public GameObject grabBox;                                  //objects inside this trigger box can be picked up by the player (think of this as your reach)
+    public GameObject dropBox;                                  //positions where the player's objects will begin dropping
     public float gap = 0.5f;                                    //how high above player to hold objects
     public Vector3 throwForce = new Vector3(0, 5, 7);           //the throw force of the player
     public float rotateToBlockSpeed = 3;                        //how fast to face the "Pushable" object you're holding/pulling
@@ -90,20 +91,11 @@ public class Throwing : MonoBehaviour
             animator.SetBool("HoldingPushable", false);
 
         //when grab is released, let go of any pushable objects were holding
-        if (heldObj && heldObj.tag == "Pushable")
+        if (Input.GetButtonDown("Drop " + playerID) && heldObj != null)
         {
-            //characterMotor.RotateToDirection(heldObj.transform.position, rotateToBlockSpeed, true);
-
-            if (Input.GetButtonUp("Grab " + playerID))
-            {
-                DropPushable();
-            }
-            if (!joint)
-            {
-                DropPushable();
-                print("'Pushable' object dropped because the 'holdingBreakForce' or 'holdingBreakTorque' was exceeded");
-            }
+            DropPickup();
         }
+
     }
 
     void OnTriggerEnter(Collider other)
@@ -226,18 +218,19 @@ public class Throwing : MonoBehaviour
         }
     }
 
-    private void DropPushable()
+    private void DropPickup()
     {
+        heldObj.transform.position = dropBox.transform.position;
         heldObj.GetComponent<Rigidbody>().interpolation = objectDefInterpolation;
         Destroy(joint);
         playerMove.rotateSpeed = defRotateSpeed;
         playerMove.SetRestrictMovementToOneAxis(false);
 
         PushableObject po = heldObj.GetComponent<PushableObject>();
-        if (po)
-            po.SetIsBeingPushed(false);
-        else
-            Debug.LogError("Unasignsed PushableObject component");
+        //if (po)
+        //    po.SetIsBeingPushed(false);
+        //else
+        //    Debug.LogError("Unasignsed PushableObject component");
 
         heldObj = null;
         timeOfThrow = Time.time;
