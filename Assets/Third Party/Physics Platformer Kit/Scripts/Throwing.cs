@@ -118,7 +118,7 @@ public class Throwing : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Pushable")
+        if (other.tag == "Pushable" || LayerMask.LayerToName(other.gameObject.layer).Contains("Invisible"))
         {
             AudioSource aus = GetComponent<AudioSource>();
 
