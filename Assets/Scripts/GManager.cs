@@ -15,10 +15,7 @@ public class GManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Test"))
-        {
-            ResetAllResetableObjects();
-        }
+       
     }
 
     public void ResetAllResetableObjects()
