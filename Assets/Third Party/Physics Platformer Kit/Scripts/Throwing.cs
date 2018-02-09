@@ -118,7 +118,7 @@ public class Throwing : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Pushable" || LayerMask.LayerToName(other.gameObject.layer).Contains("Invisible"))
+        if (other.tag == "Pushable" || LayerMask.LayerToName(other.gameObject.layer).Contains("Invisible") || LayerMask.LayerToName(other.gameObject.layer).Contains("Appearing"))
         {
             AudioSource aus = GetComponent<AudioSource>();
 
@@ -136,7 +136,6 @@ public class Throwing : MonoBehaviour
                 }
                 else
                 {
-                    Instantiate(particlesBoxCollide, transform.position + transform.forward + transform.up, transform.rotation);
                     GetComponent<AudioSource>().volume = 0.5f;
                     aus.clip = boxCollideSound;
                     aus.Play();
