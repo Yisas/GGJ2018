@@ -12,7 +12,7 @@ public class GUIManager : MonoBehaviour
 	private Health health;
 	
 	//setup, get how many coins are in this level
-	void Start()
+	void Awake()
 	{
 		coinsInLevel = GameObject.FindGameObjectsWithTag("Coin").Length;	
 		health = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
